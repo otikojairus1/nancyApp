@@ -40,4 +40,11 @@ public class AdminDashboard extends AppCompatActivity {
         //intent.putExtra("username", user.getEmail());
         startActivity(intent);
     }
+
+    public void signOut(View view) {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        //intent.putExtra("type", "patient");
+        startActivity(intent);
+        finish();
+    }
 }

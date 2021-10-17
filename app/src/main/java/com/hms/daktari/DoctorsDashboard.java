@@ -57,4 +57,11 @@ public class DoctorsDashboard extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), DoctorDepartmentDashboard.class);
         startActivity(intent);
     }
+
+    public void signOut(View view) {
+        Intent intent = new Intent(getApplicationContext(), DoctorLogin.class);
+        //intent.putExtra("type", "patient");
+        startActivity(intent);
+        finish();
+    }
 }

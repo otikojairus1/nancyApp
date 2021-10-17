@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -31,8 +32,10 @@ import java.util.Map;
 import android.widget.Spinner;
 
 public class AddDoctors extends AppCompatActivity {
-    String gsession;
+    String gsession, gender;
     TextView deletedoctor;
+    String depart = "N/A";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,13 +69,13 @@ public class AddDoctors extends AppCompatActivity {
         EditText email = (EditText)findViewById(R.id.doctoremail);
         EditText mobile = (EditText)findViewById(R.id.doctorsnumbeer);
         EditText password = (EditText)findViewById(R.id.doctorpassword);
-        EditText department = (EditText)findViewById(R.id.department);
+        //EditText department = (EditText)findViewById(R.id.department);
 
         String DoctorsName = name.getText().toString();
         String DoctorsEmail = email.getText().toString();
         String DoctorsMobile = mobile.getText().toString();
         String DoctorsPassword = password.getText().toString();
-        String DoctorsDepartment = department.getText().toString();
+       // String DoctorsDepartment = department.getText().toString();
 
         if (TextUtils.isEmpty(DoctorsName)) {
             Toast.makeText(getApplicationContext(), "please enter the doctor's name before you proceed",
@@ -87,10 +90,10 @@ public class AddDoctors extends AppCompatActivity {
         else if(TextUtils.isEmpty(DoctorsPassword)){
             Toast.makeText(getApplicationContext(), "please enter the doctor's login password before you proceed",
                     Toast.LENGTH_SHORT).show();
-        }else if(TextUtils.isEmpty(DoctorsDepartment)){
+        }else if(TextUtils.isEmpty(DoctorsPassword)){
             Toast.makeText(getApplicationContext(), "please enter the doctor's department before you proceed",
                     Toast.LENGTH_SHORT).show();
-        }else if(DoctorsDepartment.equals("Allergist")|| DoctorsDepartment.equals("Dermatologist")||DoctorsDepartment.equals("Cardiology")||DoctorsDepartment.equals("Endocriology")){
+        }else if(!TextUtils.isEmpty(DoctorsPassword)){
 
             //check existing doctor
 
@@ -105,9 +108,9 @@ public class AddDoctors extends AppCompatActivity {
                 contentValues.put("username",DoctorsName);
                 contentValues.put("password",DoctorsPassword);
                 contentValues.put("email",DoctorsEmail);
-                contentValues.put("gender","male");
+                contentValues.put("gender",gender);
                 contentValues.put("phone",DoctorsMobile);
-                contentValues.put("department",DoctorsDepartment);
+                contentValues.put("department",depart);
 
                 //  DBHelper DB = new DBHelper(getApplicationContext());
                 DB.insertDoctor(contentValues);
@@ -137,5 +140,60 @@ public class AddDoctors extends AppCompatActivity {
         intent.putExtra("type", "admin");
         startActivity(intent);
 
+    }
+
+    public void onRadioButtonClicked2(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_piratsdes:
+                if (checked)
+                    // Pirates are the best
+                    gender = "Male";
+                Toast.makeText(getApplicationContext(), "you selected male as your gender", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.radio_sdninjas:
+                if (checked)
+                    // Ninjas rule
+                    gender = "Female";
+                Toast.makeText(getApplicationContext(), "you selected female as your gender", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_pirwatess:
+                if (checked)
+                    // Pirates are the best
+                    depart = "Allergist";
+                Toast.makeText(getApplicationContext(), "you selected Allergist as your department\"", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.radio_wninjass:
+                if (checked)
+                    // Ninjas rule
+                    depart = "Dermatologist";
+                Toast.makeText(getApplicationContext(), "you selected Dermatologist as your department\"", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.radio_dawninjass:
+                if (checked)
+                    // Ninjas rule
+                    depart = "Cardiology";
+                Toast.makeText(getApplicationContext(), "you selected Cardiology as your department\"", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.radio_wdaninjass:
+                if (checked)
+                    // Ninjas rule
+                    depart = "Endocriology";
+                Toast.makeText(getApplicationContext(), "you selected Endocriology as your department", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

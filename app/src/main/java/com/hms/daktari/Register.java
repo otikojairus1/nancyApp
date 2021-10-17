@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,6 +39,7 @@ public class Register extends AppCompatActivity {
 
 
     DBHelper DB;
+    String gender = "N/A";
 
 
 
@@ -91,6 +93,7 @@ public class Register extends AppCompatActivity {
         String userpassword = password.getText().toString();
         ProgressBar loading =  (ProgressBar) findViewById(R.id.progressBar2);
 
+
         if (TextUtils.isEmpty(useremail)) {
             Toast.makeText(getApplicationContext(), "please enter your email before you proceed",
                     Toast.LENGTH_SHORT).show(); // or break, continue, throw
@@ -118,7 +121,7 @@ public class Register extends AppCompatActivity {
                 contentValues.put("username",username);
                 contentValues.put("password",userpassword);
                 contentValues.put("email",useremail);
-                contentValues.put("gender","male");
+                contentValues.put("gender",gender);
                 contentValues.put("phone",userphone);
                 //  DBHelper DB = new DBHelper(getApplicationContext());
                 DB.insertUser(contentValues);
@@ -130,5 +133,25 @@ public class Register extends AppCompatActivity {
     }
 
 
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
 
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.radio_pirates:
+                if (checked)
+                    // Pirates are the best
+                    gender = "Male";
+                    Toast.makeText(getApplicationContext(), "you selected male as your gender", Toast.LENGTH_SHORT).show();
+                    break;
+            case R.id.radio_ninjas:
+                if (checked)
+                    // Ninjas rule
+                    gender = "Female";
+                    Toast.makeText(getApplicationContext(), "you selected female as your gender", Toast.LENGTH_SHORT).show();
+                    break;
+        }
+       // Toast.makeText(getApplicationContext(), "gender working", Toast.LENGTH_SHORT).show();
+    }
 }

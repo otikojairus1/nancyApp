@@ -22,6 +22,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     style="@style/viewParent.headerText.NoMode"
                     android:layout_alignParentLeft="true"
@@ -63,6 +64,26 @@
                             android:maxLines="1" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Select gender"/>
+
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <RadioButton android:id="@+id/radio_piratsdes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MALE"
+                            android:onClick="onRadioButtonClicked2"/>
+                        <RadioButton android:id="@+id/radio_sdninjas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FEMALE"
+                            android:onClick="onRadioButtonClicked2"/>
+                    </RadioGroup>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/doctoremail2"
                         style="@style/parent"
@@ -86,18 +107,36 @@
                             android:inputType="phone"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/depa"
-                        style="@style/parent"
-                        android:layout_marginTop="@dimen/loginViewsMargin">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Select Specialization"/>
 
-                        <EditText
-                            android:id="@+id/department"
-                            style="@style/modifiedEditText"
-                            android:hint="Allergist, Dermatologist, Cardiology, Endocriology"
-                            android:inputType="text"
-                            android:maxLines="1" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <RadioButton android:id="@+id/radio_pirwatess"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Allergist"
+                            android:onClick="onRadioButtonClicked"/>
+                        <RadioButton android:id="@+id/radio_wninjass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dermatologist"
+                            android:onClick="onRadioButtonClicked"/>
+                        <RadioButton android:id="@+id/radio_dawninjass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cardiology"
+                            android:onClick="onRadioButtonClicked"/>
+                        <RadioButton android:id="@+id/radio_wdaninjass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Endocriology"
+                            android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputPassword"
                         style="@style/parent"
@@ -109,6 +148,7 @@
                             android:inputType="textPassword"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                         android:id="@+id/o"
                         style="@style/loginButton"

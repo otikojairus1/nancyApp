@@ -137,4 +137,24 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+    public boolean ispasswordValid(String oldpwdstring) {
+        String sql = "Select count(*) from user WHERE password='"+oldpwdstring+"'";
+        SQLiteStatement statement = getReadableDatabase().compileStatement(sql);
+        long l = statement.simpleQueryForLong();
+        //Log.d("test",statement);
+        statement.close();
+        return l == 0;
+    }
+
+    public boolean changepwd(ContentValues contentValues, String[] Password45 ) {
+        //String sql = "update user set password = '" +newpwd +"'WHERE password='"+oldpwdstring+"'";
+        //String[] array = new String[]{"test"};
+        int statement = getWritableDatabase().update("user", contentValues, "password = ?", Password45);
+                //update("user",contentValues,"password",Password45);
+
+        //Log.d("test",statement);
+
+        return statement == 0;
+    }
 }

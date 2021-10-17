@@ -59,4 +59,18 @@ String globalemail;
         intent.putExtra("type", "patient");
         startActivity(intent);
     }
+
+    public void signOut(View view) {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        //intent.putExtra("type", "patient");
+        startActivity(intent);
+        finish();
+    }
+
+    public void changepwd(View view) {
+        Intent intent = new Intent(getApplicationContext(), changePassword.class);
+        //intent.putExtra("type", "patient");
+        startActivity(intent);
+
+    }
 }

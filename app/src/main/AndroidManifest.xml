@@ -16,11 +16,14 @@
         android:roundIcon="@drawable/add"
         android:supportsRtl="true"
         android:theme="@style/Theme.Daktari">
-        <activity android:name=".DoctorAppointmentList"></activity>
-        <activity android:name=".EndocriologyList" />
-        <activity android:name=".Cardiology" />
-        <activity android:name=".DermatologyList" />
-        <activity android:name=".AllergistList" />
+        <activity
+            android:name=".changePassword"  android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true" />
+        <activity android:name=".DoctorAppointmentList"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EndocriologyList"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Cardiology"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".DermatologyList"  android:theme="@style/AppTheme.NoActionBar"  />
+        <activity android:name=".AllergistList"  android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Test" />
         <activity
             android:name=".DoctorProfile"
